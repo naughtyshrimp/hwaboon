@@ -13,7 +13,7 @@ import com.hwaboon.myapp.user.model.UserVO;
 import com.hwaboon.myapp.user.service.IUserService;
 
 public class AutoLoginInterceptor extends HandlerInterceptorAdapter{
-//
+
 	@Autowired
 	private IUserService service;
 	
