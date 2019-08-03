@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hwaboon.myapp.mypage.model.ShoppingCartVO;
 import com.hwaboon.myapp.mypage.service.IShoppingCartService;
 
 @RequestMapping("/shoppingcart")
@@ -21,15 +23,24 @@ public class ShoppingCartController {
 	@GetMapping(value = "/list")
 	public String list(Model model, HttpSession session) throws Exception {
 		// String userId = (String) session.getAttribute("userId");
-		model.addAttribute("list", service.list("Jacob"));
-		model.addAttribute("sum", service.sum("Jacob"));
+		if(service.count("Jacob") != 0) {
+			model.addAttribute("list", service.list("Jacob"));
+			model.addAttribute("sum", service.sum("Jacob"));
+		}
+		model.addAttribute("count", service.count("Jacob"));
 		return "shoppingcart/list";
 	}
 	
 	@RequestMapping(value = "/delete")
 	public String delete(@RequestParam int cartId) throws Exception {
 		service.delete(cartId);
-		return "redirect:shoppingcart/list";
+		return "redirect:/shoppingcart/list";
+	}
+	
+	@PostMapping("/update")
+	public String update(ShoppingCartVO item) throws Exception {
+		service.update(item);
+		return "redirect:/shoppingcart/list";
 	}
 	
 //	@RequestMapping(value = "/list")

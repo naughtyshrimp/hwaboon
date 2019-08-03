@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    <mapper namespace="com.hwaboon.myapp.item.dao.IItemDao">
+    
+    <resultMap type="com.hwaboon.myapp.item.model.ItemVO" id="itemMap">
+    	<result column="item_no" property="itemNo"/>
+    	<result column="item_subject" property="itemSubject"/>
+    	<result column="item_company" property="itemCompany"/>
+    	<result column="item_information" property="itemInformation"/>
+    	<result column="item_price" property="itemPrice"/>
+    	<result column="item_regdate" property="itemRegDate"/>
+    	<result column="item_regupdate" property="itemRegupDate"/>
+    	<result column="item_name" property="itemName"/>
+    	<result property="fileId" column="file_id" />
+      <result property="fileName" column="file_name" />
+      <result property="fileSize" column="file_size" />
+      <result property="fileContentType" column="file_content_type" />
+    </resultMap>
+    
+    <resultMap id="FileMap" type="com.hwaboon.myapp.item.model.ReviewBoardUploadFileVO">
+      <id property="fileId" column="file_id" />
+      <result property="itemNo" column="item_no" />
+      <result property="fileName" column="file_name" />
+      <result property="fileSize" column="file_size" />
+      <result property="fileContentType" column="file_content_type" />
+      <result property="fileData" column="file_data" />
+   </resultMap>
+    
+    
+	<!-- 게시글 첨부파일 등록 기능 -->
+	<insert id="insertFileData">
+		INSERT INTO review_board_upload_file(item_no, file_name, file_size, file_content_type, file_data) 
+		VALUES(#{itemNo}, #{fileName}, #{fileSize}, #{fileContentType}, #{fileData})
+	</insert>
+
+    <!--마지막 글번호 조회 기능  -->
+	<select id="selectMaxItemNo" resultType="int">
+		SELECT MAX(item_no) 
+		FROM item
+	</select>
+    
+    
+    <!-- 제품 새로 넣기 -->
+    <insert id = "iteminsert">
+    	insert into item(item_subject, item_company, item_name, item_information, item_price) values(#{itemSubject}, #{itemCompany}, #{itemName}, #{itemInformation}, #{itemPrice})
+    </insert>
+    
+    <!-- 제품 정보 수정 -->
+    <update id = "itemupdate">
+		update item set item_subject= #{itemSubject}, item_company = #{itemCompany}, item_name = #{itemName}, item_information = #{itemInformation}, item_price = #{itemPrice}, item_regupdate = now() 
+		where item_no = #{itemNo}
+    </update>
+    
+    <!-- 특정 게시물 조회 -->
+    <select id = "itemselect" resultMap="itemMap">
+    	select * from item where item_no = #{itemNo}
+    </select>
+    
+     <sql id="search">
+    	<if test="condition != ''">
+    	<if test="condition == 'itemName'">
+    		where item_name like CONCAT('%', #{keyword}, '%')
+    	</if>
+    	<if test="condition == 'itemSubject'">
+    		where item_subject like CONCAT('%', #{keyword}, '%')
+    	</if>
+    </if>
+    </sql>
+    
+     
+    
+    
+    <!-- 페이징 처리된 게시물 조회 및 검색 처리된 게시물 조회 -->
+    <select id = "itemlistAll" resultMap="itemMap">
+    	select * 
+    	from item 
+    	<include refid="search"/> 
+    	order by item_no DESC 
+    	limit #{pageStart}, #{countPerPage}
+    	
+    </select>
+    
+    <!-- db 총 게시물수 불러오기 및 검색어 처리된 게시물수 불러오기 -->
+    <select id = "itemcount" resultType="int">
+    	select count(*) from item 
+    	<include refid="search"/>
+    </select>
+    
+  
+    <delete id = "itemdelete">
+    	delete from item where item_no = #{itemNo}
+    </delete>
+
+ 	<select id = "itemNo" resultMap="itemMap">
+ 		select * from item where item_no = #{itemNo}
+ 	</select>
+<!-- =================================================== -->
+	<select id = "lotion" resultMap="itemMap">
+		select * 
+		from item 
+		where item_subject = #{itemSubject} 
+		order by item_no DESC 
+		limit #{cri.pageStart}, #{cri.countPerPage}
+	</select>
+	
+	<select id = "lotioncount" resultType="int">
+		select count(*) 
+		from item 
+		where item_subject = #{itemSubject}
+	</select>
+	<!-- =================================================== -->
+	<select id = "skin" resultMap="itemMap">
+		select * 
+		from item 
+		where item_subject = #{itemSubject} 
+		order by item_no DESC 
+		limit #{cri.pageStart}, #{cri.countPerPage}
+	</select>
+	
+	<select id = "skincount" resultType="int">
+		select count(*) 
+		from item 
+		where item_subject = #{itemSubject}
+	</select>
+	<!-- =================================================== -->
+	<select id = "cushion" resultMap="itemMap">
+		select * 
+		from item 
+		where item_subject = #{itemSubject} 
+		order by item_no DESC 
+		limit #{cri.pageStart}, #{cri.countPerPage}
+	</select>
+	
+	<select id = "cushioncount" resultType="int">
+		select count(*) 
+		from item 
+		where item_subject = #{itemSubject}
+	</select>
+	<!-- =================================================== -->
+	<select id = "suncream" resultMap="itemMap">
+		select * 
+		from item 
+		where item_subject = #{itemSubject} 
+		order by item_no DESC 
+		limit #{cri.pageStart}, #{cri.countPerPage}
+	</select>
+	
+	<select id = "suncreamcount" resultType="int">
+		select count(*) 
+		from item 
+		where item_subject = #{itemSubject}
+	</select>
+	<!-- =================================================== -->
+	<select id = "tonner" resultMap="itemMap">
+		select * 
+		from item 
+		where item_subject = #{itemSubject} 
+		order by item_no DESC 
+		limit #{cri.pageStart}, #{cri.countPerPage}
+	</select>
+	
+	<select id = "tonnercount" resultType="int">
+		select count(*) 
+		from item 
+		where item_subject = #{itemSubject}
+	</select>
+ 	
+ 	
+ 	
+ 	
+
+    
+    </mapper>

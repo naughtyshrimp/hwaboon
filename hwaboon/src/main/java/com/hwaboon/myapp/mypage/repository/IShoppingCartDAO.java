@@ -14,6 +14,10 @@ public interface IShoppingCartDAO {
 	
 	void update(ShoppingCartVO item) throws Exception;
 	
+	int count(String userId) throws Exception;
+	
+	
+	
 //	List<ShoppingCartVO> list() throws Exception;
 //	void insert(ShoppingCartVO item) throws Exception;
 //	void updateAmount(ShoppingCartVO item) throws Exception;

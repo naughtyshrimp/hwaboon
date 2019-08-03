@@ -39,6 +39,11 @@ public class ShoppingCartDAO implements IShoppingCartDAO {
 		
 	}
 
+	@Override
+	public int count(String userId) throws Exception {
+		return sqlSession.selectOne("ShoppingCartMapper.count", userId);
+	}
+
 
 //	@Override
 //	public void insert(ShoppingCartVO item) throws Exception {

@@ -7,7 +7,12 @@
 
 <html lang="ko">
 <head>
-	<title>Review</title>
+
+	<style type="text/css">
+ a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: black; text-decoration: underline;}
+</style>
 
 <jsp:include page="../include/static-header.jsp" />
 	
@@ -16,16 +21,6 @@
 	
  <jsp:include page="../include/main-header.jsp" />
  
-
-
-	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/images/bg-02.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">
-			Review
-		</h2>
-	</section>	
-
-
 	<!-- Content page -->
 	<section class="bg0 p-t-62 p-b-60">
 		<div class="container">

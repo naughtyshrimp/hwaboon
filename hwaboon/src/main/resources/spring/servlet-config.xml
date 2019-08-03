@@ -44,6 +44,24 @@
     <!-- 객체를 주입할 때 이하의 패키지에서 검색하겠다. -->
     <context:component-scan base-package="com.hwaboon.myapp" />
     
+    <!-- 사용자 페이지 인터셉터 빈 등록 설정 -->
+    <interceptors>
+       <interceptor>
+          <mapping path="/user/mypage"/>
+          <mapping path="/user/update_info"/>
+          <mapping path="/user/update_pw"/>
+          <beans:bean id="userInterceptor" class="com.hwaboon.myapp.commons.interceptor.UserInterceptor"/>
+       </interceptor>
+    </interceptors>
+
+    <!-- 자동 로그인 인터셉터 빈 등록 설정 -->
+    <interceptors>
+       <interceptor>
+          <mapping path="/**/"/>
+          <beans:bean id="autoLoginInterceptor" class="com.hwaboon.myapp.commons.interceptor.AutoLoginInterceptor"/>
+       </interceptor>
+    </interceptors>
+    
     
     
 </beans:beans>

@@ -12,6 +12,10 @@ public interface IShoppingCartService {
 	
 	int sum(String userId) throws Exception;
 	
+	int count(String userId) throws Exception;
+	
+	void update(ShoppingCartVO item) throws Exception;
+	
 	
 //	void insert(ShoppingCartVO item) throws Exception;
 //	void updateAmount(ShoppingCartVO item) throws Exception;

@@ -8,6 +8,8 @@
         <configuration>
         <typeAliases>
       <typeAlias type="com.hwaboon.myapp.review.model.ReviewVO" alias="ReviewVO"/>
+      		<typeAlias type="com.hwaboon.myapp.user.model.UserVO" alias="UserVO" />
+		<typeAlias type="com.hwaboon.myapp.user.model.LoginVO" alias="LoginVO" />
    </typeAliases>
         
         </configuration>

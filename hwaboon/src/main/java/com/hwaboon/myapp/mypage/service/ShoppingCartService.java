@@ -30,6 +30,17 @@ public class ShoppingCartService implements IShoppingCartService {
 	public int sum(String userId) throws Exception {
 		return dao.sum(userId);
 	}
+
+	@Override
+	public int count(String userId) throws Exception {
+		return dao.count(userId);
+	}
+
+	@Override
+	public void update(ShoppingCartVO item) throws Exception {
+		dao.update(item);
+		
+	}
 	
 	
 	

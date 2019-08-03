@@ -8,7 +8,14 @@ public class ShoppingCartVO {
 	private int amount;
 	private String itemName;
 	private int itemPrice;
+	private int total;
 	
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
 	public int getCartId() {
 		return cartId;
 	}
@@ -48,8 +55,13 @@ public class ShoppingCartVO {
 	@Override
 	public String toString() {
 		return "ShoppingCartVO [cartId=" + cartId + ", userId=" + userId + ", itemNo=" + itemNo + ", amount=" + amount
-				+ ", itemName=" + itemName + ", itemPrice=" + itemPrice + "]";
+				+ ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", total=" + total + ", getTotal()="
+				+ getTotal() + ", getCartId()=" + getCartId() + ", getUserId()=" + getUserId() + ", getItemNo()="
+				+ getItemNo() + ", getAmount()=" + getAmount() + ", getItemName()=" + getItemName()
+				+ ", getItemPrice()=" + getItemPrice() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
+
 	
 	
 	

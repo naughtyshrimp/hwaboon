@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
-        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
     <!-- 
         root-context.xml : mvc 설정과 관련된 여러 처리를 담당하는 설정 파일 (ex: DAO, VO, servi ce...) 
         xml의 형태를 어떻게 사용할 것인가 빈(객체)들을 관리하는 문서(xml)이다.
@@ -60,6 +62,9 @@
         <constructor-arg ref="sqlSessionFactory"/>
     </bean>
  
+ 	<!-- [Mapper.xml파일을 빈 객체로 등록 하는 설정] -->
+	<mybatis-spring:scan base-package="com.hwaboon.myapp.user.repository"/>
+	<mybatis-spring:scan base-package="com.hwaboon.myapp.item.dao"/>
  
    
     <!-- [컴포넌트 자동 스캔 명령] -->

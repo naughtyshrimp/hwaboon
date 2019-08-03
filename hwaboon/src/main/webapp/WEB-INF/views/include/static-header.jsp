@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<head>
-   <title>Home</title>
+   <title>Hwaboon</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
 <!--===============================================================================================-->   
    <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
 <!--===============================================================================================-->
@@ -37,4 +37,3 @@
    <link rel="stylesheet" type="text/css" href="/css/util.css">
    <link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
-</head>
